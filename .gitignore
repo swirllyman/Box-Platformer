@@ -1,47 +1,141 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+# Folders
+[Dd]ebug*/
+[Rr]elease*/
+[Bb]in/
+obj/
+Lib/
+ipch/
+.vs/
 
-# Folder config file
-Desktop.ini
+# SLN
+*.db
+*.sdf
+*.suo
+*.user
+*.opensdf
+*.pidb
+*.userprefs
+*.opendb
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+# System Files
+*.DS_Store
+*.cachefile
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+# Unity files
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/Assets/AssetStoreTools*
 
-# Windows shortcuts
-*.lnk
+*.sln
+*.csproj
+*.tmp
+*.booproj
+*.svd
+*.apk
+*.unitypackage
+*.log
 
-# =========================
-# Operating System Files
-# =========================
+sysinfo.txt
 
-# OSX
-# =========================
-
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
+*.gititgui-user
+Assets/Int2_Setdressing/MeshKit/Backup Scene.meta
+Assets/Int2_Setdressing/MeshKit/Inverted Meshes.meta
+Assets/Scenes/Adventure_Cave/MeshKit/Backup Scene.meta
+Assets/Scenes/Adventure_Cave/MeshKit/Inverted Meshes.meta
+Assets/Scenes/Adventure_Int1/MeshKit/Inverted Meshes.meta
+Assets/Scenes/Adventure_Int1/MeshKit/Backup Scene.meta
+Assets/Scenes/Adventure_Ext2/MeshKit/DoubleSided Meshes.meta
+Assets/Scenes/Scene_1_Generator/MeshKit/Backup Scene.meta
+Assets/Scenes/Scene_4_Cave/MeshKit/Backup Scene.meta
+Assets/Scenes/Adventure_Interior2/MeshKit/Backup Scene.meta
+Assets/Scenes/Scene_1_Generator/MeshKit/Rebuilt Meshes.meta
+Assets/Scenes/Scene_1_Generator/MeshKit/Combined Meshes.meta
+Assets/Scenes/Scene_4_Cave/MeshKit/DoubleSided Meshes.meta
+Assets/Scenes/Scene_1_Generator/MeshKit/Inverted Meshes.meta
+Assets/Scenes/Scene_4_Cave/MeshKit/Rebuilt Meshes.meta
+Assets/Scenes/Scene_1_Generator/MeshKit/Seperated Meshes.meta
+Assets/Sparks test/MeshKit/Rebuilt Meshes.meta
+Assets/Scenes/Scene_4_Cave/MeshKit/Inverted Meshes.meta
+Assets/Sparks test/MeshKit/Backup Scene.meta
+Assets/Sparks test/MeshKit/Seperated Meshes.meta
+Assets/VacuumShaders/Terrain To Mesh/Packages/Shaders (Curved World).unitypackage.meta
+Assets/Sparks test/MeshKit/DoubleSided Meshes.meta
+Assets/Sparks test/MeshKit/Combined Meshes.meta
+Assets/VacuumShaders/Terrain To Mesh/Packages/Shaders (Default).unitypackage.meta
+Assets/Scenes/Adventure_Interior2/MeshKit/Inverted Meshes.meta
+Assets/VRcade/Scene 0.meta
+Assets/VRcade/Scene 0/Animated World.prefab
+Assets/VRcade/Scene 0/Animated World.prefab.meta
+Assets/VRcade/Scene 0 Environmental Effects.prefab
+Assets/VRcade/Scene 0 Environmental Effects.prefab.meta
+Assets/VRcade/Scene 0 Environmental Effects Shuttle.prefab.meta
+Assets/VRcade/Scene 0 Environmental Effects Shuttle.prefab
+Assets/Scenes/Scene_3_Shuttle_Crash/Scene 4 Environmental Effects.prefab.meta
+Assets/Scenes/Scene_3_Shuttle_Crash/Scene 4 Environmental Effects.prefab
+Assets/rockImpactSounds.cs.meta
+Assets/Scenes/Scene_2a_Egg_Hunt/MeshKit.meta
+Assets/MicInputDetection.cs.meta
+Assets/Sync Cube/MeshKit/Seperated Meshes.meta
+Assets/Sync Cube/MeshKit/Rebuilt Meshes.meta
+Assets/Sync Cube/MeshKit/DoubleSided Meshes.meta
+Assets/Sync Cube/MeshKit/Combined Meshes.meta
+Assets/Sync Cube/MeshKit/Backup Scene.meta
+Assets/Scenes/Scene_FlyingBoss/MeshKit/Inverted Meshes.meta
+Assets/Scenes/Scene_FlyingBoss/MeshKit/Backup Scene.meta
+Assets/Scenes/Scene_2b_Laser/MeshKit/Rebuilt Meshes.meta
+Assets/Scenes/Scene_2b_Laser/MeshKit/Inverted Meshes.meta
+Assets/Scenes/Scene_2b_Laser/MeshKit/Backup Scene.meta
+Assets/Scenes/Scene_2a_Egg_Hunt/MeshKit/Rebuilt Meshes.meta
+Assets/Scenes/Scene_2a_Egg_Hunt/MeshKit/Inverted Meshes.meta
+Assets/Scenes/Scene_2a_Egg_Hunt/MeshKit/DoubleSided Meshes.meta
+Assets/Scenes/Scene_2a_Egg_Hunt/MeshKit/Backup Scene.meta
+Assets/Scenes/Scene_2a_Egg_Hunt Jamie/MeshKit/Rebuilt Meshes.meta
+Assets/Scenes/Scene_2a_Egg_Hunt Jamie/MeshKit/Backup Scene.meta
+Assets/Scenes/Scene_2_Egg_Hunt/MeshKit/Inverted Meshes.meta
+Assets/Scenes/Scene_2_Egg_Hunt/MeshKit/Backup Scene.meta
+Assets/Scenes/Scene_1b_Coolant/MeshKit/Seperated Meshes.meta
+Assets/Scenes/Scene_1b_Coolant/MeshKit/Rebuilt Meshes.meta
+Assets/Scenes/Scene_1b_Coolant/MeshKit/Inverted Meshes.meta
+Assets/Scenes/Scene_1b_Coolant/MeshKit/DoubleSided Meshes.meta
+Assets/Scenes/Scene_1b_Coolant/MeshKit/Backup Scene.meta
+Assets/Scenes/Scene_1a_Generator/MeshKit/Seperated Meshes.meta
+Assets/Scenes/Scene_1a_Generator/MeshKit/Inverted Meshes.meta
+Assets/Scenes/Scene_1a_Generator/MeshKit/DoubleSided Meshes.meta
+Assets/Scenes/Scene_1a_Generator/MeshKit/Combined Meshes.meta
+Assets/Scenes/Scene_1a_Generator/MeshKit/Backup Scene.meta
+Assets/Scenes/Scene_0_HQ_Terminal17/MeshKit/Inverted Meshes.meta
+Assets/Scenes/Scene_0_HQ_Terminal17/MeshKit/Backup Scene.meta
+Assets/Scenes/Adventure_Ext2/MeshKit/Inverted Meshes.meta
+Assets/Scenes/Adventure_Ext2/MeshKit/Backup Scene.meta
+Assets/Prefab editor Scene/MeshKit/Inverted Meshes.meta
+Assets/Prefab editor Scene/MeshKit/Backup Scene.meta
+Assets/End Elevator/MeshKit/Rebuilt Meshes.meta
+Assets/End Elevator/MeshKit/Inverted Meshes.meta
+Assets/End Elevator/MeshKit/Combined Meshes.meta
+Assets/End Elevator/MeshKit/Backup Scene.meta
+Assets/Bug Tests/MeshKit/Seperated Meshes.meta
+Assets/Bug Tests/MeshKit/Rebuilt Meshes.meta
+Assets/Bug Tests/MeshKit/Inverted Meshes.meta
+Assets/Bug Tests/MeshKit/DoubleSided Meshes.meta
+Assets/Bug Tests/MeshKit/Combined Meshes.meta
+Assets/Bug Tests/MeshKit/Backup Scene.meta
+Assets/Bug Tests/MeshKit.meta
+Assets/Prefabs/VRPlayer Prefab Full IK Simplified Jamie.prefab
+Assets/Prefabs/VRPlayer Prefab Full IK Simplified Jamie.prefab.meta
+Assets/Scenes/Scene_CaveBoss/MeshKit/Inverted Meshes.meta
+Assets/NetworkSceneManager.prefab.meta
+Assets/Scenes/Scene_CaveBoss/MeshKit/Rebuilt Meshes.meta
+Assets/NetworkSceneManager.prefab
+Assets/Scenes/Scene_CaveBoss/MeshKit/Seperated Meshes.meta
+Assets/Scenes/Scene_CaveBoss/MeshKit/DoubleSided Meshes.meta
+Assets/Scenes/Scene_CaveBoss/MeshKit/Backup Scene.meta
+Assets/GroupCommand.cs.meta
+Assets/Plugins/RootMotion/FinalIK/_Integration.meta~90863ba1b80637bc5dcfbb69c895e14a343c9cc9
+Assets/Plugins/RootMotion/FinalIK/_Integration.meta~90863ba1b80637bc5dcfbb69c895e14a343c9cc9.meta
+Assets/Servers and Walls.prefab.meta
+Assets/Servers and Walls.prefab
+Assets/Scenes/Scene_2a_Egg_Hunt Jamie.meta
+.vs/ArenaDemo - Forward/v15/sqlite3/storage.ide
