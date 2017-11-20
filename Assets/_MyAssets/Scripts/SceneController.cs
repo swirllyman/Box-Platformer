@@ -26,7 +26,7 @@ public class SceneController : MonoBehaviour {
     /// <param name="levelNum">Level idx</param>
     public void LoadLevel(int worldNum = 0, int levelNum = 0)
     {
-        StartLoadingSequence(worlds[worldNum].levels[levelNum].levelName);
+        StartLoadingSequence(worlds[worldNum].levels[levelNum - 1].levelName);
     }
 
     public void LoadWorld(int worldNum)

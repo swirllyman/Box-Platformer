@@ -437,10 +437,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 1640333572330078, guid: ccf363bfb4d5b8848ac7af735aafb6a7,
     type: 2}
-  backgroundImg: {fileID: 0}
+  currentPlayer: {fileID: 0}
+  worldNum: 0
+  levelNum: 0
+  backgroundImg: {fileID: 21300000, guid: 01ff28670ec91044799801c0fd957336, type: 3}
   checkPoints:
   - {fileID: 1133628464}
   currentcheckPoint: {fileID: 1133628464}
+  timedLevel: {fileID: 0}
 --- !u!4 &734113941
 Transform:
   m_ObjectHideFlags: 0
@@ -543,21 +547,6 @@ Prefab:
     - target: {fileID: 4967368275449940, guid: e138fb6b5e650c94897645432e952171, type: 2}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114368510110249178, guid: e138fb6b5e650c94897645432e952171,
-        type: 2}
-      propertyPath: worldNum
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114493041200124172, guid: e138fb6b5e650c94897645432e952171,
-        type: 2}
-      propertyPath: m_Text
-      value: Overworld
-      objectReference: {fileID: 0}
-    - target: {fileID: 114493041200124172, guid: e138fb6b5e650c94897645432e952171,
-        type: 2}
-      propertyPath: m_FontData.m_BestFit
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e138fb6b5e650c94897645432e952171, type: 2}
@@ -839,6 +828,40 @@ Prefab:
         type: 2}
       propertyPath: m_Text
       value: Winterland
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258465835490244, guid: d12c34eeebfe6d946bc8ccb049f72a30, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65154593459268642, guid: d12c34eeebfe6d946bc8ccb049f72a30,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 3.439467
+      objectReference: {fileID: 0}
+    - target: {fileID: 65154593459268642, guid: d12c34eeebfe6d946bc8ccb049f72a30,
+        type: 2}
+      propertyPath: m_Center.x
+      value: -0.017687833
+      objectReference: {fileID: 0}
+    - target: {fileID: 65154593459268642, guid: d12c34eeebfe6d946bc8ccb049f72a30,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1.7441466
+      objectReference: {fileID: 0}
+    - target: {fileID: 65154593459268642, guid: d12c34eeebfe6d946bc8ccb049f72a30,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 0.4240949
+      objectReference: {fileID: 0}
+    - target: {fileID: 224098561275736176, guid: d12c34eeebfe6d946bc8ccb049f72a30,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224098561275736176, guid: d12c34eeebfe6d946bc8ccb049f72a30,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d12c34eeebfe6d946bc8ccb049f72a30, type: 2}

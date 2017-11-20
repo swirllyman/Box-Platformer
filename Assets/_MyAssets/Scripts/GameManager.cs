@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour {
     public void SetupLocalPlayer(PlayerStats newPlayer)
     {
         localPlayerStats = newPlayer;
+        if (localPlayer != null)
+        {
+            localPlayer.username = localPlayerStats.accountName;
+        }
     }
 
     public void CreateLocalPlayerPrefab()

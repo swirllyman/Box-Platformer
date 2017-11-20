@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
     public Renderer myRend;
-
+    public string username;
+    PlayerController myController;
     Rigidbody body;
     
 
 	// Use this for initialization
 	void Start () {
+        myController = GetComponent<PlayerController>();
         body = GetComponent<Rigidbody>();
         SceneManager.sceneLoaded += LevelLoaded;
 	}
@@ -18,23 +20,31 @@ public class Player : MonoBehaviour {
 
     void LevelLoaded(Scene scene, LoadSceneMode mode)
     {
-        ResetPosition();
-        if(scene.name == "Overworld")
+        if (scene.name == "Overworld")
         {
             GetComponentInParent<PlayerAndCameraHolder>().myAudioListener.enabled = true;
         }
+        if(scene.name.Substring(1, 1) == "-")
+        {
+            print("Timed Level");
+            PauseController(true);
+        }
+        else
+        {
+            PauseController(false);
+        }
     }
     
-    void ResetPosition()
+    public void PauseController(bool pause)
     {
+        myController.enabled = !pause;
         body.velocity = Vector3.zero;
-        transform.position = LevelManager.singleton.currentcheckPoint.transform.position;
-        transform.rotation = LevelManager.singleton.currentcheckPoint.transform.rotation;
     }
 
     public void Die()
     {
-        ResetPosition();
+        body.velocity = Vector3.zero;
+        LevelManager.singleton.ResetLevel();
         StartCoroutine(DeathFlash());
     }
 

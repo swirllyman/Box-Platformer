@@ -2,7 +2,7 @@
 [System.Serializable]
 public class PlayerStats
 {
-    string accountName;
+    public string accountName;
     float totalScore;
 
     public PlayerStats (string newAccountName, float newTotalScore)

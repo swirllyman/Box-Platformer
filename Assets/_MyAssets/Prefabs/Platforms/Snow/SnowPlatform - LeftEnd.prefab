@@ -11,6 +11,23 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1811781743475348}
   m_IsPrefabParent: 1
+--- !u!1 &1021406733637608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4232633464057406}
+  - component: {fileID: 33480761833386182}
+  - component: {fileID: 65412869311188488}
+  m_Layer: 0
+  m_Name: Ground
+  m_TagString: Ground
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1260248714095914
 GameObject:
   m_ObjectHideFlags: 0
@@ -20,7 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4305274248046746}
   - component: {fileID: 212007159225348118}
-  - component: {fileID: 65743672831052014}
   m_Layer: 0
   m_Name: SnowBlock (3)
   m_TagString: Ground
@@ -37,7 +53,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4026609728927754}
   - component: {fileID: 212503707280032514}
-  - component: {fileID: 65437945389128250}
   m_Layer: 0
   m_Name: SnowBlock (2)
   m_TagString: Ground
@@ -70,7 +85,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4082946518420440}
   - component: {fileID: 212439384632743692}
-  - component: {fileID: 65123568592112090}
   m_Layer: 0
   m_Name: SnowBlock
   m_TagString: Ground
@@ -90,6 +104,23 @@ GameObject:
   m_Layer: 0
   m_Name: Dirt
   m_TagString: Ground
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1785005641222800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4784890331178716}
+  - component: {fileID: 33650207100115876}
+  - component: {fileID: 65121783635553820}
+  m_Layer: 0
+  m_Name: Wall
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +165,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4517358847428004}
   - component: {fileID: 212881601768409244}
-  - component: {fileID: 65606744133665674}
   m_Layer: 0
   m_Name: SnowBlock (1)
   m_TagString: Ground
@@ -179,13 +209,15 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1811781743475348}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.66, y: -1.68, z: 10}
+  m_LocalPosition: {x: -31.76, y: -2.52, z: -0.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4082946518420440}
   - {fileID: 4517358847428004}
   - {fileID: 4026609728927754}
   - {fileID: 4305274248046746}
+  - {fileID: 4232633464057406}
+  - {fileID: 4784890331178716}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -215,6 +247,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4517358847428004}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4232633464057406
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1021406733637608}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.69, y: 1.13, z: 0}
+  m_LocalScale: {x: 9.54, y: 0.122499995, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4038908982881802}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4305274248046746
 Transform:
@@ -283,54 +328,57 @@ Transform:
   m_Father: {fileID: 4026609728927754}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65123568592112090
+--- !u!4 &4784890331178716
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1785005641222800}
+  m_LocalRotation: {x: -0, y: -0, z: -0.70710677, w: 0.7071068}
+  m_LocalPosition: {x: -1.1, y: -0.74, z: 0}
+  m_LocalScale: {x: 3.6952667, y: 0.122499995, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4038908982881802}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.00001}
+--- !u!33 &33480761833386182
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1021406733637608}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &33650207100115876
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1785005641222800}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65121783635553820
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1537904402681312}
+  m_GameObject: {fileID: 1785005641222800}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2792473, y: 0.1801269, z: 0.2}
-  m_Center: {x: 0, y: 0.5341946, z: 0}
---- !u!65 &65437945389128250
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65412869311188488
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1355087301266936}
+  m_GameObject: {fileID: 1021406733637608}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2792473, y: 0.1801269, z: 0.2}
-  m_Center: {x: 0, y: 0.5341946, z: 0}
---- !u!65 &65606744133665674
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1843268560800866}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.2792473, y: 0.1801269, z: 0.2}
-  m_Center: {x: 0, y: 0.5341946, z: 0}
---- !u!65 &65743672831052014
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1260248714095914}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.2792473, y: 0.1801269, z: 0.2}
-  m_Center: {x: 0, y: 0.5341946, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212007159225348118
 SpriteRenderer:
   m_ObjectHideFlags: 1
