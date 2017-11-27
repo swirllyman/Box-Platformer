@@ -23,9 +23,10 @@ public class LevelManager : MonoBehaviour {
         singleton = this;
     }
 
-	// Use this for initialization
-	void Start () {
-		if(GameManager.singleton == null)
+    // Use this for initialization
+    void Start()
+    {
+        if (GameManager.singleton == null)
         {
             GameObject player = Instantiate(playerPrefab, currentcheckPoint.position, currentcheckPoint.rotation);
             currentPlayer = player.GetComponentInChildren<Player>();
@@ -88,8 +89,8 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
-    public Vector2 GetLevelTimers()
+    public float GetLevelTime()
     {
-        return new Vector2(timedLevel.currentLevelTimer, timedLevel.levelTime);
+        return timedLevel.currentLevelTimer;
     }
 }

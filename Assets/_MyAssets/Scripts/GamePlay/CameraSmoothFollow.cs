@@ -17,9 +17,14 @@ public class CameraSmoothFollow : MonoBehaviour {
         backgroundRend = backgroundImage.GetComponentInChildren<SpriteRenderer>();
     }
 
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= LevelLoaded;
+    }
+
     void LevelLoaded(Scene scene, LoadSceneMode mode)
     {
-        if(LevelManager.singleton != null)
+        if (LevelManager.singleton != null)
         {
             backgroundRend.sprite = LevelManager.singleton.backgroundImg;
         }

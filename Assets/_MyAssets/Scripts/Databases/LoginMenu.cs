@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class LoginMenu : MonoBehaviour {
     
@@ -11,20 +12,22 @@ public class LoginMenu : MonoBehaviour {
     public GameObject credentialPane;
     public InputField accountNameInput;
     public InputField passwordInput;
+    public Text submitButtonText;
 
     [Header("Account Button")]
     public GameObject accountButton;
     public Text accountNameText;
 
+    AccountPanel myAccount;
     bool connecting = false;
 
     #region Canvas Buttons
-
     public void ClearFeedbackText()
     {
         if(feedbackText.text == "Incorrect Username/PW")
             feedbackText.text = "";
     }
+
     public void LoginUser()
     {
         if (connecting) return;
@@ -33,12 +36,92 @@ public class LoginMenu : MonoBehaviour {
 
     public void LogOut()
     {
+        if (myAccount.active)
+        {
+            CloseAccount();
+        }
         credentialPane.SetActive(true);
         accountButton.SetActive(false);
+        GameManager.singleton.ResetGameSession();
+    }
+
+    public void OpenAccount()
+    {
+        print("Open Player Progess Window");
+        if(GameManager.singleton.localPlayer != null)
+        {
+            GameManager.singleton.localPlayer.PauseController(true);
+        }
+        myAccount.Init();
+    }
+
+    public void CloseAccount()
+    {
+        print("Close Player Progess Window");
+        if (GameManager.singleton.localPlayer != null)
+        {
+            GameManager.singleton.localPlayer.PauseController(false);
+        }
+        myAccount.Close();
+    }
+
+    public void CheckAccountName()
+    {
+        print("Checking for account name");
+        StartCoroutine(CheckForUsername(accountNameInput.text));
     }
 
     #endregion
 
+
+    void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+        myAccount = GetComponent<AccountPanel>();
+    }
+
+    void Update()
+    {
+        if(accountNameInput.isFocused && Input.GetKeyDown(KeyCode.Tab))
+        {
+            accountNameInput.DeactivateInputField();
+            passwordInput.ActivateInputField();
+        }
+        else if (passwordInput.isFocused)
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                passwordInput.DeactivateInputField();
+                accountNameInput.ActivateInputField();
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape) && myAccount.active)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            CloseAccount();
+        }
+    }
+
+    IEnumerator CheckForUsername(string username)
+    {
+        WWWForm form = new WWWForm();
+        print("Checking for username: " + username);
+        form.AddField("usernamePost", username);
+        WWW www = new WWW("https://shipment.000webhostapp.com/CheckForUserName.php", form);
+        yield return www;
+        print(www.text);
+        if (www.text == "Success")
+        {
+            submitButtonText.text = "Login";
+            feedbackText.text = "Account is created. Enter P/W.";
+        }
+        else
+        {
+            submitButtonText.text = "Create";
+            feedbackText.text = "Create a new Account!";
+        }
+    }
 
     IEnumerator LoginToDB(string username, string password)
     {
@@ -46,7 +129,9 @@ public class LoginMenu : MonoBehaviour {
         form.AddField("usernamePost", username);
         form.AddField("passwordPost", password);
         form.AddField("emailPost", "");
-        WWW www = new WWW("http://localhost/box_platformer/InsertUser.php", form);
+
+        feedbackText.text = "Authenticating.";
+        WWW www = new WWW("https://shipment.000webhostapp.com/InsertUser.php", form);
 
         yield return www;
         print(www.text);
@@ -71,6 +156,5 @@ public class LoginMenu : MonoBehaviour {
         GameManager.singleton.SetupLocalPlayer(p);
         credentialPane.SetActive(false);
         accountButton.SetActive(true);
-
     }
 }

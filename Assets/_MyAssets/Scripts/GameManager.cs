@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour {
         {
             localPlayer.username = localPlayerStats.accountName;
         }
+        else
+        {
+            SceneController.singleton.InitialLoad();
+        }
     }
 
     public void CreateLocalPlayerPrefab()
@@ -36,6 +40,22 @@ public class GameManager : MonoBehaviour {
         GameObject player = Instantiate(playerPrefab);
         DontDestroyOnLoad(player);
         localPlayer = player.GetComponentInChildren<Player>();
+
+        //Started game without signing in
+        if (localPlayerStats == null)
+        {
+            localPlayer.username = "Guest";
+        }
+        else
+        {
+            localPlayer.username = localPlayerStats.accountName;
+        }
+    }
+
+    public void ResetGameSession()
+    {
+        Destroy(localPlayer.transform.parent.gameObject);
+        SceneController.singleton.LoadMainMenu();
     }
 
 }

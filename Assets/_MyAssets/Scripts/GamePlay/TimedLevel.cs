@@ -5,9 +5,7 @@ using UnityEngine.UI;
 
 public class TimedLevel : MonoBehaviour {
 
-    public float levelTime = 0.0f;
-    public float currentLevelTimer;
-
+    public float currentLevelTimer = 0.0f;
     public Text levelNameText;
     public Text levelTimeText;
     public Text startTimeText;
@@ -27,8 +25,8 @@ public class TimedLevel : MonoBehaviour {
     public void SetupTimedLevel()
     {
         levelStarted = false;
+        currentLevelTimer = 0.0f;
         LevelManager.singleton.currentPlayer.PauseController(true);
-        currentLevelTimer = levelTime;
         levelTimeText.text = currentLevelTimer.ToString("F2");
         levelStartAnim.Play();
     }
@@ -38,6 +36,7 @@ public class TimedLevel : MonoBehaviour {
         levelStarted = false;
     }
     
+    //Called from animation event
     public void UpdateTime(int time)
     {
         if (time > 0)
@@ -54,15 +53,8 @@ public class TimedLevel : MonoBehaviour {
     {
         if (levelStarted)
         {
-            if(currentLevelTimer > 0.0f)
-            {
-                currentLevelTimer -= Time.deltaTime;
-                levelTimeText.text = currentLevelTimer.ToString("F2");
-            }
-            else
-            {
-                LevelManager.singleton.EndLevel(false);
-            }
+            currentLevelTimer += Time.deltaTime;
+            levelTimeText.text = currentLevelTimer.ToString("F2");
         }
     }
 }

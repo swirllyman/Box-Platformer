@@ -9,13 +9,15 @@ public class PlayerController : MonoBehaviour {
     public bool doubleJumping = false;
     public bool onLeftWall = false;
     public bool onRightWall = false;
+    public ParticleSystem leftWallSlideEffect;
+    public ParticleSystem rightWallSlideEffect;
 
     Ray rayRight;
     Ray rayLeft;
     Ray rayDown;
     RaycastHit hit;
     Rigidbody body;
-    CapsuleCollider col;
+    //CapsuleCollider col;
 
     float movementCD = .5f;
     float jumpDirection = 0;
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour {
     void Start()
     {
         body = GetComponent<Rigidbody>();
-        col = GetComponent<CapsuleCollider>();
+        //col = GetComponent<CapsuleCollider>();
     }
 
 	
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour {
 
         CheckArea();
         CheckInput();
+        CheckVFX();
 
         if (justWallJumped)
         {
@@ -45,8 +48,39 @@ public class PlayerController : MonoBehaviour {
                 movementCD -= Time.deltaTime;
             }
         }
-
 	}
+
+    void CheckVFX()
+    {
+        if (!onGround)
+        {
+            if (onLeftWall & !leftWallSlideEffect.isPlaying)
+            {
+                leftWallSlideEffect.Play();
+            }
+            else if (!onLeftWall && leftWallSlideEffect.isPlaying)
+            {
+                leftWallSlideEffect.Stop();
+            }
+
+            if (onRightWall & !rightWallSlideEffect.isPlaying)
+            {
+                rightWallSlideEffect.Play();
+            }
+            else if (!onRightWall && rightWallSlideEffect.isPlaying)
+            {
+                rightWallSlideEffect.Stop();
+            }
+        }
+        else if (rightWallSlideEffect.isPlaying)
+        {
+            rightWallSlideEffect.Stop();
+        }
+        else if(leftWallSlideEffect.isPlaying)
+        {
+            leftWallSlideEffect.Stop();
+        }
+    }
 
     void CheckArea()
     {
@@ -99,13 +133,13 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetButtonDown("Jump"))
         {
-            if (onLeftWall || onRightWall)
-            {
-                JumpOffWall();
-            }
-            else if (onGround)
+            if (onGround)
             {
                 Jump(direction);
+            }
+            else if (onLeftWall || onRightWall)
+            {
+                JumpOffWall();
             }
             else if (doubleJumping && secondJumpAvailable)
             {
@@ -129,8 +163,10 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Inhibit movement when against a wall
-        if (direction > 0 && onRightWall) direction = 0;
-        else if (direction < 0 && onLeftWall) direction = 0;
+        if (direction > 0 && onRightWall)
+            direction = 0;
+        else if (direction < 0 && onLeftWall)
+            direction = 0;
 
         //Change speed depending on air status
         if (!onGround &! switchedDirectionInAir)

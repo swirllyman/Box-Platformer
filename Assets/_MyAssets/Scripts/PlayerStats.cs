@@ -3,11 +3,11 @@
 public class PlayerStats
 {
     public string accountName;
-    float totalScore;
+    //float totalScore;
 
     public PlayerStats (string newAccountName, float newTotalScore)
     {
         accountName = newAccountName;
-        totalScore = newTotalScore;
+        //totalScore = newTotalScore;
     }
 }

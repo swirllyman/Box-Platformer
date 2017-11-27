@@ -39,18 +39,27 @@ public class SceneController : MonoBehaviour {
         StartLoadingSequence(worlds[0].worldName);
     }
 
-    void StartLoadingSequence(string sceneToLoad)
+    public void LoadMainMenu()
     {
-        SceneManager.LoadScene(sceneToLoad);
+        StartLoadingSequence("Main");
     }
 
+    void StartLoadingSequence(string sceneToLoad, bool resetPlayer = true)
+    {
+        if (resetPlayer)
+        {
+            if (GameManager.singleton.localPlayer != null)
+                GameManager.singleton.localPlayer.ResetParent();
+        }
+        SceneManager.LoadScene(sceneToLoad);
+    }
 
     #region Buttons
 
     public void InitialLoad()
     {
         GameManager.singleton.CreateLocalPlayerPrefab();
-        StartLoadingSequence(worlds[0].worldName);
+        StartLoadingSequence(worlds[0].worldName, false);
     }
 
     public void LoadSettings()
