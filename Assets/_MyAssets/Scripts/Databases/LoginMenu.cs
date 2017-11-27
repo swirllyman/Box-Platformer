@@ -71,6 +71,11 @@ public class LoginMenu : MonoBehaviour {
         StartCoroutine(CheckForUsername(accountNameInput.text));
     }
 
+    public void DeleteAccountRecords()
+    {
+        print("Deleting All Scores for player");
+    }
+
     #endregion
 
 
