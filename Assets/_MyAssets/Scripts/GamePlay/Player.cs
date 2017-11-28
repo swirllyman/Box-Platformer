@@ -4,26 +4,27 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
+
+    public GameObject deathEffect;
     public Renderer myRend;
     public string username;
     PlayerAndCameraHolder pAndCHolder;
     PlayerController myController;
     Rigidbody body;
-    
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         pAndCHolder = GetComponentInParent<PlayerAndCameraHolder>();
         myController = GetComponent<PlayerController>();
         body = GetComponent<Rigidbody>();
         SceneManager.sceneLoaded += LevelLoaded;
-	}
+    }
 
     void OnDestroy()
     {
         SceneManager.sceneLoaded -= LevelLoaded;
     }
-	
+
 
     void LevelLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -31,7 +32,7 @@ public class Player : MonoBehaviour {
         {
             GetComponentInParent<PlayerAndCameraHolder>().myAudioListener.enabled = true;
         }
-        if(scene.name.Substring(1, 1) == "-")
+        if (scene.name.Substring(1, 1) == "-")
         {
             print("Timed Level");
             PauseController(true);
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour {
             PauseController(false);
         }
     }
-    
+
     //Might get called before Start
     public void PauseController(bool pause)
     {
@@ -49,7 +50,7 @@ public class Player : MonoBehaviour {
             myController = GetComponent<PlayerController>();
         myController.enabled = !pause;
 
-        if(body == null)
+        if (body == null)
             body = GetComponent<Rigidbody>();
         body.velocity = Vector3.zero;
     }
@@ -57,8 +58,7 @@ public class Player : MonoBehaviour {
     public void Die()
     {
         body.velocity = Vector3.zero;
-        LevelManager.singleton.ResetLevel();
-        StartCoroutine(DeathFlash());
+        StartCoroutine(Death());
 
         if (transform.parent != pAndCHolder.transform)
             transform.parent = pAndCHolder.transform;
@@ -69,8 +69,35 @@ public class Player : MonoBehaviour {
         transform.parent = pAndCHolder.transform;
     }
 
-    IEnumerator DeathFlash()
+    IEnumerator Death()
     {
+        body.velocity = Vector3.zero;
+        if (transform.parent != pAndCHolder.transform)
+            transform.parent = pAndCHolder.transform;
+
+        Instantiate(deathEffect, myRend.transform.position, Quaternion.identity);
+        myRend.enabled = false;
+        PauseController(true);
+        yield return new WaitForSeconds(1.5f);
+        PauseController(false);
+        LevelManager.singleton.ResetLevel();
+
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = false;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = true;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = false;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = true;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = false;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = true;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = false;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = true;
         yield return new WaitForSeconds(.05f);
         myRend.enabled = false;
         yield return new WaitForSeconds(.05f);

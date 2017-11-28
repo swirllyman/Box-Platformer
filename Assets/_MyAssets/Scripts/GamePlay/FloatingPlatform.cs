@@ -45,7 +45,6 @@ public class FloatingPlatform : MonoBehaviour {
     {
         if(c.tag == "Player")
         {
-            print("Player Entered");
             currentPlayer = c.GetComponent<Player>();
             currentPlayer.transform.parent = transform;
         }
@@ -55,7 +54,6 @@ public class FloatingPlatform : MonoBehaviour {
     {
         if (c.tag == "Player")
         {
-            print("Player Exited");
             currentPlayer.ResetParent();
             currentPlayer = null;
         }
@@ -69,7 +67,6 @@ public class FloatingPlatform : MonoBehaviour {
 
     void SwapDestinations()
     {
-        print("Swapping Destinations");
         transitioning = false;
         currentLerpTime = Time.time;
         origin = destinations[currentIdx % destinations.Length];

@@ -74,6 +74,10 @@ public class LoginMenu : MonoBehaviour {
     public void DeleteAccountRecords()
     {
         print("Deleting All Scores for player");
+        if (GameManager.singleton.localPlayer != null)
+        {
+            StartCoroutine(DeleteAccountRecords(GameManager.singleton.localPlayer.username));
+        }
     }
 
     #endregion
@@ -161,5 +165,21 @@ public class LoginMenu : MonoBehaviour {
         GameManager.singleton.SetupLocalPlayer(p);
         credentialPane.SetActive(false);
         accountButton.SetActive(true);
+    }
+
+    IEnumerator DeleteAccountRecords(string theAccountName)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("usernamePost", theAccountName);
+        
+        WWW www = new WWW("https://shipment.000webhostapp.com/DeleteUserRecords.php", form);
+
+        yield return www;
+        if (www.text == "Success")
+        {
+            print("Scores deleted.");
+        }
+        else
+            print("Scores were not deleted.");
     }
 }

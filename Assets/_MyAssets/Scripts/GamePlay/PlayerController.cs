@@ -11,7 +11,10 @@ public class PlayerController : MonoBehaviour {
     public bool onRightWall = false;
     public ParticleSystem leftWallSlideEffect;
     public ParticleSystem rightWallSlideEffect;
+    public ParticleSystem groundMovementParticles;
 
+    Vector3 myFakeVelocity;
+    Vector3 prevPos;
     Ray rayRight;
     Ray rayLeft;
     Ray rayDown;
@@ -41,6 +44,9 @@ public class PlayerController : MonoBehaviour {
         CheckInput();
         CheckVFX();
 
+        myFakeVelocity = (transform.position - prevPos) / Time.deltaTime;
+        prevPos = transform.position;
+
         if (justWallJumped)
         {
             if(movementCD > 0)
@@ -52,8 +58,23 @@ public class PlayerController : MonoBehaviour {
 
     void CheckVFX()
     {
+        if (onGround)
+        {
+            if ((myFakeVelocity.x > 5 || myFakeVelocity.x < -5) &!groundMovementParticles.isPlaying)
+            {
+                groundMovementParticles.Play();
+            }
+            else if ((myFakeVelocity.x < 5 && myFakeVelocity.x > -5) && groundMovementParticles.isPlaying)
+            {
+                groundMovementParticles.Stop();
+            }
+        }
         if (!onGround)
         {
+            if(groundMovementParticles.isPlaying)
+            {
+                groundMovementParticles.Stop();
+            }
             if (onLeftWall & !leftWallSlideEffect.isPlaying)
             {
                 leftWallSlideEffect.Play();
