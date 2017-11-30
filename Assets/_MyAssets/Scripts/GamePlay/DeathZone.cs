@@ -9,5 +9,9 @@ public class DeathZone : MonoBehaviour {
         {
             c.GetComponent<Player>().Die();
         }
+        else if(c.tag == "Slammer")
+        {
+            c.GetComponentInParent<Slammer>().DisableSlammer();
+        }
     }
 }

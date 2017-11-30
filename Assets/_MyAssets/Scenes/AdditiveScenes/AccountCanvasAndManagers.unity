@@ -441,6 +441,13 @@ MonoBehaviour:
     - levelName: 1-3
     - levelName: 1-4
     - levelName: 1-5
+  - worldName: Grassy Hills
+    levels:
+    - levelName: 2-1
+    - levelName: 2-2
+    - levelName: 2-3
+    - levelName: 2-4
+    - levelName: 2-5
   settingsLevel: Settings
   accountLevel: Account
 --- !u!4 &169095052

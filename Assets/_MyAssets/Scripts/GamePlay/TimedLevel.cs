@@ -9,6 +9,7 @@ public class TimedLevel : MonoBehaviour {
     public Text levelNameText;
     public Text levelTimeText;
     public Text startTimeText;
+    public Text timedLevelText;
     public Animation levelStartAnim;
     LevelManager manager;
 
@@ -27,7 +28,8 @@ public class TimedLevel : MonoBehaviour {
         levelStarted = false;
         currentLevelTimer = 0.0f;
         LevelManager.singleton.currentPlayer.PauseController(true);
-        levelTimeText.text = currentLevelTimer.ToString("F2");
+        timedLevelText.text = "Timed";
+        levelTimeText.text = "Level";
         levelStartAnim.Play();
     }
 
@@ -40,7 +42,14 @@ public class TimedLevel : MonoBehaviour {
     public void UpdateTime(int time)
     {
         if (time > 0)
+        {
+            if(time == 2)
+            {
+                levelTimeText.text = 00.00f.ToString("F2");
+                timedLevelText.text = "Level Time: ";
+            }
             startTimeText.text = time + "";
+        }
         else
         {
             startTimeText.text = "GO!";

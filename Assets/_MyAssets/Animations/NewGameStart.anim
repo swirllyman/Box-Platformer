@@ -210,8 +210,14 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
+        time: 5
+        value: 404
+        inSlope: 10.064503
+        outSlope: 10.064503
+        tangentMode: 136
+      - serializedVersion: 2
         time: 5.5666666
-        value: 400.1
+        value: 1400
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -722,8 +728,14 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
+        time: 5
+        value: 404
+        inSlope: 10.064503
+        outSlope: 10.064503
+        tangentMode: 136
+      - serializedVersion: 2
         time: 5.5666666
-        value: 400.1
+        value: 1400
         inSlope: 0
         outSlope: 0
         tangentMode: 136

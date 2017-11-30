@@ -15,5 +15,7 @@ public class SendLevelScore
         WWW www = new WWW("https://shipment.000webhostapp.com/InsertTime.php", form);
         yield return www;
         Debug.Log(www.text);
-    } 
+    }
+
+    //public static IEnumerator SetPowerupForPlayer(string username, string powerup
 }

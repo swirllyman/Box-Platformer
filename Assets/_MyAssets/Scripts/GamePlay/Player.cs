@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour {
 
     public GameObject deathEffect;
+    public GameObject doubleJumpRockets;
     public Renderer myRend;
     public string username;
+    bool dead = false;
     PlayerAndCameraHolder pAndCHolder;
     PlayerController myController;
     Rigidbody body;
@@ -18,6 +20,7 @@ public class Player : MonoBehaviour {
         myController = GetComponent<PlayerController>();
         body = GetComponent<Rigidbody>();
         SceneManager.sceneLoaded += LevelLoaded;
+        StartCoroutine(GetPowerups());
     }
 
     void OnDestroy()
@@ -43,6 +46,11 @@ public class Player : MonoBehaviour {
         }
     }
 
+    void CheckPowerups()
+    {
+        StartCoroutine(GetPowerups());
+    }
+
     //Might get called before Start
     public void PauseController(bool pause)
     {
@@ -57,6 +65,8 @@ public class Player : MonoBehaviour {
 
     public void Die()
     {
+        if (dead) return;
+        dead = true;
         body.velocity = Vector3.zero;
         StartCoroutine(Death());
 
@@ -81,42 +91,65 @@ public class Player : MonoBehaviour {
         yield return new WaitForSeconds(1.5f);
         PauseController(false);
         LevelManager.singleton.ResetLevel();
+        dead = false;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = false;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = true;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = false;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = true;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = false;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = true;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = false;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = true;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = false;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = true;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = false;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = true;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = false;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = true;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = false;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = true;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = false;
+        yield return new WaitForSeconds(.05f);
+        myRend.enabled = true;
+    }
 
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = false;
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = true;
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = false;
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = true;
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = false;
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = true;
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = false;
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = true;
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = false;
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = true;
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = false;
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = true;
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = false;
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = true;
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = false;
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = true;
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = false;
-        yield return new WaitForSeconds(.05f);
-        myRend.enabled = true;
+    IEnumerator GetPowerups()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("usernamePost", username);
+        WWW www = new WWW("https://shipment.000webhostapp.com/GetPlayerPowerups.php", form);
+
+        yield return www;
+        string[] powerups = www.text.Split('|');
+        foreach(string s in powerups)
+        {
+            if(s == "0")
+            {
+                SetupDoubleJump();
+            }
+        }
+    }
+
+    public void SetupDoubleJump()
+    {
+        doubleJumpRockets.SetActive(true);
+        myController.doubleJumpAcquired = true;
     }
 }

@@ -6,12 +6,14 @@ public class PlayerController : MonoBehaviour {
 
     public float speed;
     public float jumpAmount;
-    public bool doubleJumping = false;
+    public bool doubleJumpAcquired = false;
     public bool onLeftWall = false;
     public bool onRightWall = false;
+    [Header("VFX")]
     public ParticleSystem leftWallSlideEffect;
     public ParticleSystem rightWallSlideEffect;
     public ParticleSystem groundMovementParticles;
+    public ParticleSystem[] doubleJumpBoost;
 
     Vector3 myFakeVelocity;
     Vector3 prevPos;
@@ -162,7 +164,7 @@ public class PlayerController : MonoBehaviour {
             {
                 JumpOffWall();
             }
-            else if (doubleJumping && secondJumpAvailable)
+            else if (doubleJumpAcquired && secondJumpAvailable)
             {
                 SecondJump(direction);
             }
@@ -243,6 +245,10 @@ public class PlayerController : MonoBehaviour {
 
     void SecondJump(float direction)
     {
+        foreach(ParticleSystem p in doubleJumpBoost)
+        {
+            p.Play();
+        }
         secondJumpAvailable = false;
         body.velocity = Vector3.zero;
         body.AddForce(Vector3.up * jumpAmount);

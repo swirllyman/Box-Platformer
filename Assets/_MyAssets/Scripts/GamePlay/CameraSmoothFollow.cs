@@ -31,7 +31,7 @@ public class CameraSmoothFollow : MonoBehaviour {
     }
 
 	// Update is called once per frame
-	void LateUpdate ()
+	void Update ()
     {
         if(transform.position.x < 110 && transform.position.x > -85)
             backgroundImage.localPosition = new Vector3(-transform.position.x / 20, backgroundImage.localPosition.y, backgroundImage.localPosition.z);

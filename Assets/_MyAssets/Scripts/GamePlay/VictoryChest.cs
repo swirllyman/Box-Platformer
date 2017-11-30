@@ -33,12 +33,12 @@ public class VictoryChest : MonoBehaviour {
             //c.GetComponent<Player>().LevelFinished();
             anim.SetBool("Open", true);
             particles.SetActive(true);
-            EndLevel();
+            EndLevel(c.GetComponent<Player>());
         }
     }
 
 
-    void EndLevel()
+    protected virtual void EndLevel(Player p)
     {
         LevelManager.singleton.EndLevel(true);
         canvasAnim.SetBool("Open", true);
@@ -68,11 +68,10 @@ public class VictoryChest : MonoBehaviour {
     }
 
     
-    IEnumerator EndOfLevelScores(string username, string levelTotal, string levelScore)
-    {   
+    protected virtual IEnumerator EndOfLevelScores(string username, string levelTotal, string levelScore)
+    {
 
         //TODO: NEED A PROPER RETURN TO AVOID RACE CONDITIONS IN OPEN ENVIRONMENTS
-
         StartCoroutine(SendLevelScore.SendScores(username, levelNameText.text, levelTotal, levelScore));
         yield return new WaitForSeconds(1.0f);
         StartCoroutine(GetTopPlayerScore(username));

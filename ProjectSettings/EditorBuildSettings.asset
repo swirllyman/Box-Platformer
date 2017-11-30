@@ -30,5 +30,23 @@ EditorBuildSettings:
     path: Assets/_MyAssets/Scenes/World 1/1-5.unity
     guid: 86b2012d31e6eac4ea35acb4f453551a
   - enabled: 1
+    path: Assets/_MyAssets/Scenes/Grassy Hills.unity
+    guid: d6ff37b5aa8f42a47a32082bcbff8c13
+  - enabled: 1
+    path: Assets/_MyAssets/Scenes/World 2/2-1.unity
+    guid: e8ea73ad32ddf92498955e31812fe7bb
+  - enabled: 1
+    path: Assets/_MyAssets/Scenes/World 2/2-2.unity
+    guid: 46a7175209ea1a744b69374d767c7105
+  - enabled: 1
+    path: Assets/_MyAssets/Scenes/World 2/2-3.unity
+    guid: 6d7c8a256bb74764d814dcf61fc6dc2e
+  - enabled: 1
+    path: Assets/_MyAssets/Scenes/World 2/2-4.unity
+    guid: 2b0f52b142bc1d5419b662354175f240
+  - enabled: 1
+    path: Assets/_MyAssets/Scenes/World 2/2-5.unity
+    guid: 8399a0a9750028d45b720f39ed74c0a6
+  - enabled: 1
     path: Assets/_MyAssets/Scenes/AdditiveScenes/AccountCanvasAndManagers.unity
     guid: b7e356c626145554a819ead87ce488cf
