@@ -320,7 +320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &645292435
 RectTransform:
   m_ObjectHideFlags: 0
@@ -940,8 +940,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ExitGame
+      - m_Target: {fileID: 543477816}
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1002,7 +1002,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.078, y: 0.18280311}
   m_AnchorMax: {x: 0.91800004, y: 0.3776062}
-  m_AnchoredPosition: {x: 749, y: -210}
+  m_AnchoredPosition: {x: -754, y: -210}
   m_SizeDelta: {x: -1.8459473, y: -2.2402344}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2135614224

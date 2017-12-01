@@ -9,6 +9,39 @@ public class SpecialVictoryChest : VictoryChest
     public SpecialChestContainer myContainer;
     public string powerupName = "DoubleJump";
     public GameObject specialVFX;
+    public ParticleSystem confettiParticles2;
+    public float initialOffset = 1.0f;
+    public float confettiBurstTime2 = 2.0f;
+    float confettiTimer2;
+
+    protected override void Start()
+    {
+        base.Start();
+        confettiTimer2 = confettiBurstTime2;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if(initialOffset > 0.0f)
+        {
+            initialOffset -= Time.deltaTime;
+        }
+        else
+        {
+            if (confettiTimer2 > 0.0f)
+            {
+                confettiTimer2 -= Time.deltaTime;
+            }
+            else
+            {
+                confettiTimer2 = confettiBurstTime2;
+                confettiParticles2.Play();
+                confettiAudio.Play();
+            }
+        }
+    }
 
     protected override void EndLevel(Player p)
     {

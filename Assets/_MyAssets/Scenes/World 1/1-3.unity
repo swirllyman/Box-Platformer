@@ -108,12 +108,6 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &66267970 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114493041200124172, guid: e138fb6b5e650c94897645432e952171,
-    type: 2}
-  m_PrefabInternal: {fileID: 944092037}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &83340141
 Prefab:
   m_ObjectHideFlags: 0
@@ -308,7 +302,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4207490384155002, guid: f0d0b4be5ea382747b15ae71fce56e6e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.49
+      value: -1.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207490384155002, guid: f0d0b4be5ea382747b15ae71fce56e6e, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 16.256256
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f0d0b4be5ea382747b15ae71fce56e6e, type: 2}
@@ -502,21 +500,6 @@ Prefab:
       propertyPath: worldNum
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114493041200124172, guid: e138fb6b5e650c94897645432e952171,
-        type: 2}
-      propertyPath: m_Text
-      value: Overworld
-      objectReference: {fileID: 0}
-    - target: {fileID: 114493041200124172, guid: e138fb6b5e650c94897645432e952171,
-        type: 2}
-      propertyPath: m_FontData.m_BestFit
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114368510110249178, guid: e138fb6b5e650c94897645432e952171,
-        type: 2}
-      propertyPath: portalText
-      value: 
-      objectReference: {fileID: 66267970}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e138fb6b5e650c94897645432e952171, type: 2}
   m_IsPrefabParent: 0

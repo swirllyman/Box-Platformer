@@ -119,7 +119,6 @@ public class LoginMenu : MonoBehaviour {
         form.AddField("usernamePost", username);
         WWW www = new WWW("https://shipment.000webhostapp.com/CheckForUserName.php", form);
         yield return www;
-        print(www.text);
         if (www.text == "Success")
         {
             submitButtonText.text = "Login";
@@ -143,7 +142,6 @@ public class LoginMenu : MonoBehaviour {
         WWW www = new WWW("https://shipment.000webhostapp.com/InsertUser.php", form);
 
         yield return www;
-        print(www.text);
         if (www.text == "Success")
         {
             feedbackText.text = "Connecting.";

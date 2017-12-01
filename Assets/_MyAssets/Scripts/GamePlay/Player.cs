@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
+    public AudioClip deathClip;
+    public AudioClip respawnClip;
     public GameObject deathEffect;
     public GameObject doubleJumpRockets;
     public Renderer myRend;
@@ -13,9 +15,11 @@ public class Player : MonoBehaviour {
     PlayerAndCameraHolder pAndCHolder;
     PlayerController myController;
     Rigidbody body;
+    AudioSource myAudio;
 
     // Use this for initialization
     void Start() {
+        myAudio = GetComponent<AudioSource>();
         pAndCHolder = GetComponentInParent<PlayerAndCameraHolder>();
         myController = GetComponent<PlayerController>();
         body = GetComponent<Rigidbody>();
@@ -66,6 +70,8 @@ public class Player : MonoBehaviour {
     public void Die()
     {
         if (dead) return;
+        myAudio.clip = deathClip;
+        myAudio.Play();
         dead = true;
         body.velocity = Vector3.zero;
         StartCoroutine(Death());
@@ -89,6 +95,10 @@ public class Player : MonoBehaviour {
         myRend.enabled = false;
         PauseController(true);
         yield return new WaitForSeconds(1.5f);
+
+        myAudio.clip = respawnClip;
+        myAudio.Play();
+
         PauseController(false);
         LevelManager.singleton.ResetLevel();
         dead = false;

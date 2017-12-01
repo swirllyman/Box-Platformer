@@ -6,11 +6,14 @@ using UnityEngine.UI;
 
 public class VictoryChest : MonoBehaviour {
 
+    public ParticleSystem confettiParticles;
+    public AudioSource confettiAudio;
+    public AudioSource chestOpen;
+    public AudioSource victory;
     public GameObject particles;
     public Animator canvasAnim;
 
-    Animator anim;
-    bool opened = false;
+    public float confettiBurstTime = 2.0f;
     public Text levelNameText;
     public Text yourTimeText;
     public Text yourBestText;
@@ -19,12 +22,30 @@ public class VictoryChest : MonoBehaviour {
     public Image[] stars;
     public float[] levelTimeThresholds;
 
-    void Start()
+    Animator anim;
+    float confettiTimer = 2.0f;
+    bool opened = false;
+
+    protected virtual void Start()
     {
         anim = GetComponent<Animator>();
         levelNameText.text = LevelManager.singleton.worldNum + "-" + LevelManager.singleton.levelNum;
+        confettiTimer = confettiBurstTime;
     }
 
+    protected virtual void Update()
+    {
+        if(confettiTimer > 0.0f)
+        {
+            confettiTimer -= Time.deltaTime;
+        }
+        else
+        {
+            confettiTimer = confettiBurstTime;
+            confettiParticles.Play();
+            confettiAudio.Play();
+        }
+    }
 
 	void OnTriggerEnter(Collider c)
     {
@@ -33,6 +54,7 @@ public class VictoryChest : MonoBehaviour {
             //c.GetComponent<Player>().LevelFinished();
             anim.SetBool("Open", true);
             particles.SetActive(true);
+            chestOpen.Play();
             EndLevel(c.GetComponent<Player>());
         }
     }
@@ -74,6 +96,7 @@ public class VictoryChest : MonoBehaviour {
         //TODO: NEED A PROPER RETURN TO AVOID RACE CONDITIONS IN OPEN ENVIRONMENTS
         StartCoroutine(SendLevelScore.SendScores(username, levelNameText.text, levelTotal, levelScore));
         yield return new WaitForSeconds(1.0f);
+        victory.Play();
         StartCoroutine(GetTopPlayerScore(username));
     }
 

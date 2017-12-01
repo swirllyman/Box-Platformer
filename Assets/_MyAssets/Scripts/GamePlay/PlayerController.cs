@@ -9,11 +9,17 @@ public class PlayerController : MonoBehaviour {
     public bool doubleJumpAcquired = false;
     public bool onLeftWall = false;
     public bool onRightWall = false;
-    [Header("VFX")]
+    [Header("FX")]
     public ParticleSystem leftWallSlideEffect;
     public ParticleSystem rightWallSlideEffect;
     public ParticleSystem groundMovementParticles;
     public ParticleSystem[] doubleJumpBoost;
+    public AudioSource running;
+    public AudioSource sliding;
+    public AudioSource jumping;
+    public AudioClip jump;
+    public AudioClip boostJump;
+    AudioSource myAudio;
 
     Vector3 myFakeVelocity;
     Vector3 prevPos;
@@ -35,6 +41,7 @@ public class PlayerController : MonoBehaviour {
     void Start()
     {
         body = GetComponent<Rigidbody>();
+        myAudio = GetComponent<AudioSource>();
         //col = GetComponent<CapsuleCollider>();
     }
 
@@ -44,7 +51,7 @@ public class PlayerController : MonoBehaviour {
 
         CheckArea();
         CheckInput();
-        CheckVFX();
+        CheckFX();
 
         myFakeVelocity = (transform.position - prevPos) / Time.deltaTime;
         prevPos = transform.position;
@@ -58,17 +65,19 @@ public class PlayerController : MonoBehaviour {
         }
 	}
 
-    void CheckVFX()
+    void CheckFX()
     {
         if (onGround)
         {
             if ((myFakeVelocity.x > 5 || myFakeVelocity.x < -5) &!groundMovementParticles.isPlaying)
             {
                 groundMovementParticles.Play();
+                running.Play();
             }
             else if ((myFakeVelocity.x < 5 && myFakeVelocity.x > -5) && groundMovementParticles.isPlaying)
             {
                 groundMovementParticles.Stop();
+                running.Stop();
             }
         }
         if (!onGround)
@@ -76,32 +85,39 @@ public class PlayerController : MonoBehaviour {
             if(groundMovementParticles.isPlaying)
             {
                 groundMovementParticles.Stop();
+                running.Stop();
             }
             if (onLeftWall & !leftWallSlideEffect.isPlaying)
             {
                 leftWallSlideEffect.Play();
+                sliding.Play();
             }
             else if (!onLeftWall && leftWallSlideEffect.isPlaying)
             {
                 leftWallSlideEffect.Stop();
+                sliding.Stop();
             }
 
             if (onRightWall & !rightWallSlideEffect.isPlaying)
             {
                 rightWallSlideEffect.Play();
+                sliding.Play();
             }
             else if (!onRightWall && rightWallSlideEffect.isPlaying)
             {
                 rightWallSlideEffect.Stop();
+                sliding.Stop();
             }
         }
         else if (rightWallSlideEffect.isPlaying)
         {
             rightWallSlideEffect.Stop();
+            sliding.Stop();
         }
         else if(leftWallSlideEffect.isPlaying)
         {
             leftWallSlideEffect.Stop();
+            sliding.Stop();
         }
     }
 
@@ -213,6 +229,8 @@ public class PlayerController : MonoBehaviour {
 
     void JumpOffWall()
     {
+        jumping.clip = jump;
+        jumping.Play();
         justWallJumped = true;
         movementCD = .5f;
         body.velocity = Vector3.zero;
@@ -234,6 +252,8 @@ public class PlayerController : MonoBehaviour {
 
     void Jump(float direction)
     {
+        jumping.clip = jump;
+        jumping.Play();
         body.velocity = Vector3.zero;
         body.AddForce(Vector3.up * jumpAmount);
 
@@ -245,7 +265,9 @@ public class PlayerController : MonoBehaviour {
 
     void SecondJump(float direction)
     {
-        foreach(ParticleSystem p in doubleJumpBoost)
+        jumping.clip = boostJump;
+        jumping.Play();
+        foreach (ParticleSystem p in doubleJumpBoost)
         {
             p.Play();
         }

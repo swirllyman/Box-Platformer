@@ -12,6 +12,7 @@ public class Slammer : MonoBehaviour {
     public Sprite awakeSprite;
 
     public Transform destinationTransform;
+    public AudioSource myAudio;
     public float sleepSeconds = 1.0f;
     public float fallSpeed;
     public float riseSpeed;
@@ -116,7 +117,7 @@ public class Slammer : MonoBehaviour {
         {
             myPlatform.TakeDamage();
         }
-
+        myAudio.Play();
         currentState = MovingState.None;
         yield return new WaitForSeconds(.5f);
         currentState = MovingState.Rising;

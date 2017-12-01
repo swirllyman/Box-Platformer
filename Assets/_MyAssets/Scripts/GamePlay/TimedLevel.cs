@@ -11,6 +11,10 @@ public class TimedLevel : MonoBehaviour {
     public Text startTimeText;
     public Text timedLevelText;
     public Animation levelStartAnim;
+
+    public AudioSource myAudio;
+    public AudioClip timerClip;
+    public AudioClip goClip;
     LevelManager manager;
 
     bool levelStarted = false;
@@ -48,10 +52,15 @@ public class TimedLevel : MonoBehaviour {
                 levelTimeText.text = 00.00f.ToString("F2");
                 timedLevelText.text = "Level Time: ";
             }
+
+            myAudio.clip = timerClip;
+            myAudio.Play();
             startTimeText.text = time + "";
         }
         else
         {
+            myAudio.clip = goClip;
+            myAudio.Play();
             startTimeText.text = "GO!";
             LevelManager.singleton.currentPlayer.PauseController(false);
             levelStarted = true;

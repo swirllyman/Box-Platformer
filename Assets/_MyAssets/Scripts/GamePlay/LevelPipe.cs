@@ -19,10 +19,15 @@ public class LevelPipe : MonoBehaviour
 
     public Image[] stars;
 
+    public AudioClip openAudio;
+    public AudioClip closeAudio;
+    AudioSource myAudio;
+
     bool statsOpen = false;
 
     void Start()
     {
+        myAudio = GetComponentInChildren<AudioSource>();
         levelNumText.text = worldNum.ToString("F0") + "-" + levelNum.ToString("F0");
 
         StartCoroutine(GetTopLevelScore(levelNumText.text));
@@ -37,6 +42,8 @@ public class LevelPipe : MonoBehaviour
     {
         if (c.tag == "Player")
         {
+            myAudio.clip = openAudio;
+            myAudio.Play();
             anim.SetBool("Open", true);
             statsOpen = true;
         }
@@ -46,6 +53,8 @@ public class LevelPipe : MonoBehaviour
     {
         if (c.tag == "Player")
         {
+            myAudio.clip = closeAudio;
+            myAudio.Play();
             anim.SetBool("Open", false);
             statsOpen = false;
         }
