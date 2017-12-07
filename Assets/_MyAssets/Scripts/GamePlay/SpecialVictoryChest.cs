@@ -52,6 +52,7 @@ public class SpecialVictoryChest : VictoryChest
         StartCoroutine(RegisterPowerup(p.username));
     }
 
+    #region DB Calls
     IEnumerator RegisterPowerup(string username)
     {
         print("Registering powerup");
@@ -63,4 +64,6 @@ public class SpecialVictoryChest : VictoryChest
         yield return www;
         print(www.text);
     }
+
+    #endregion
 }

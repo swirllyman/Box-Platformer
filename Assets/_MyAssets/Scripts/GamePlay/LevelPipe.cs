@@ -80,17 +80,17 @@ public class LevelPipe : MonoBehaviour
         form.AddField("levelnamePost", levelName);
         WWW www = new WWW("https://shipment.000webhostapp.com/GetTopLevelScore.php", form);
 
-        print("Getting top score for: " + levelName);
+        //print("Getting top score for: " + levelName);
 
         yield return www;
         if (System.String.IsNullOrEmpty(www.text) || www.text == "N/A" || www.text == "|")
         {
-            print("No Scores for this level");
+            //print("No Scores for this level");
             topTimeTime.text = "N/A";
         }
         else
         {
-            print("Top Level Score gathered "+www.text);
+            //print("Top Level Score gathered "+www.text);
             string[] nameAndTime = www.text.Split('|');
             topNameText.text = nameAndTime[0];
             float topScore = float.Parse(nameAndTime[1], CultureInfo.InvariantCulture.NumberFormat);
@@ -101,7 +101,7 @@ public class LevelPipe : MonoBehaviour
 
     IEnumerator GetTopPlayerScore(string username, string levelName)
     {
-        print("Getting highest score for "+username+" for level "+levelName);
+        //print("Getting highest score for "+username+" for level "+levelName);
         if (username == "")
         {
             yourBestText.text = "N/A";
@@ -116,12 +116,12 @@ public class LevelPipe : MonoBehaviour
 
         if (System.String.IsNullOrEmpty(www.text) || www.text == "N/A" || www.text == "|")
         {
-            print("No Scores for this level");
+            //print("No Scores for this level");
             yourBestText.text = "N/A";
         }
         else
         {
-            print("Top Level Score gathered " + www.text);
+            //print("Top Level Score gathered " + www.text);
             string[] scoreAndTime = www.text.Split('|');
             int score = int.Parse(scoreAndTime[0], CultureInfo.InvariantCulture.NumberFormat);
 

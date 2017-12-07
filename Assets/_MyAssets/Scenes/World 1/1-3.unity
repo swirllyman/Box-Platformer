@@ -998,14 +998,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114206591676499586, guid: 195d4db8acc71234fb3e4a821f4668fc,
         type: 2}
-      propertyPath: worldNum
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114206591676499586, guid: 195d4db8acc71234fb3e4a821f4668fc,
-        type: 2}
       propertyPath: currentcheckPoint
       value: 
       objectReference: {fileID: 1133628464}
+    - target: {fileID: 114206591676499586, guid: 195d4db8acc71234fb3e4a821f4668fc,
+        type: 2}
+      propertyPath: levelNum
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 195d4db8acc71234fb3e4a821f4668fc, type: 2}
   m_IsPrefabParent: 0

@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour {
     public AudioSource jumping;
     public AudioClip jump;
     public AudioClip boostJump;
-    AudioSource myAudio;
 
     Vector3 myFakeVelocity;
     Vector3 prevPos;
@@ -41,7 +40,6 @@ public class PlayerController : MonoBehaviour {
     void Start()
     {
         body = GetComponent<Rigidbody>();
-        myAudio = GetComponent<AudioSource>();
         //col = GetComponent<CapsuleCollider>();
     }
 
@@ -118,6 +116,15 @@ public class PlayerController : MonoBehaviour {
         {
             leftWallSlideEffect.Stop();
             sliding.Stop();
+        }
+    }
+
+    void OnDisable()
+    {
+        if (groundMovementParticles.isPlaying)
+        {
+            groundMovementParticles.Stop();
+            running.Stop();
         }
     }
 

@@ -47,7 +47,7 @@ public class LoginMenu : MonoBehaviour {
 
     public void OpenAccount()
     {
-        print("Open Player Progess Window");
+        //print("Open Player Progess Window");
         if(GameManager.singleton.localPlayer != null)
         {
             GameManager.singleton.localPlayer.PauseController(true);
@@ -57,17 +57,17 @@ public class LoginMenu : MonoBehaviour {
 
     public void CloseAccount()
     {
-        print("Close Player Progess Window");
+        //print("Close Player Progess Window");
         if (GameManager.singleton.localPlayer != null)
         {
             GameManager.singleton.localPlayer.PauseController(false);
         }
         myAccount.Close();
     }
-
+     
     public void CheckAccountName()
     {
-        print("Checking for account name");
+        //print("Checking for account name");
         StartCoroutine(CheckForUsername(accountNameInput.text));
     }
 
@@ -112,10 +112,11 @@ public class LoginMenu : MonoBehaviour {
         }
     }
 
+    #region DB Calls
     IEnumerator CheckForUsername(string username)
     {
         WWWForm form = new WWWForm();
-        print("Checking for username: " + username);
+        //print("Checking for username: " + username);
         form.AddField("usernamePost", username);
         WWW www = new WWW("https://shipment.000webhostapp.com/CheckForUserName.php", form);
         yield return www;
@@ -178,6 +179,7 @@ public class LoginMenu : MonoBehaviour {
             print("Scores deleted.");
         }
         else
-            print("Scores were not deleted.");
+            print("Scores failed to delete.");
     }
+    #endregion
 }

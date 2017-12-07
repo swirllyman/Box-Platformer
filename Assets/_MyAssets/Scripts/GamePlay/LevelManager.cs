@@ -74,7 +74,7 @@ public class LevelManager : MonoBehaviour {
 
     IEnumerator LoadBackIntoWorld()
     {
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(6.0f);
         SceneController.singleton.LoadWorld(worldNum);
     }
 

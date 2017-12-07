@@ -48,12 +48,41 @@ public class AccountPanel : MonoBehaviour {
         if (GameManager.singleton != null)
         {
             username = GameManager.singleton.localPlayer.username;
+            //print("using Default");
         }
 
         for (int i = 0; i < levelUIs.Length; i++)
         {
-            levelUIs[i].levelName.text = (worldIdx + 1) + "-" + (i + 1);
-            StartCoroutine(GetTopPlayerScore(username, levelUIs[i].levelName.text, i));
+            string levelName = (worldIdx + 1) + "-" + (i + 1);
+            levelUIs[i].levelName.text = levelName;
+            StartCoroutine(GetTopPlayerScore(username, levelName, i));
+            StartCoroutine(GetTopLevelScore(levelName, levelUIs[i].bestName, levelUIs[i].bestTime));
+        }
+    }
+
+    #region DB Calls
+    IEnumerator GetTopLevelScore(string levelName, Text nameText, Text timeText)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("levelnamePost", levelName);
+        WWW www = new WWW("https://shipment.000webhostapp.com/GetTopLevelScore.php", form);
+
+        //print("Getting top score for: " + levelName);
+
+        yield return www;
+        if (System.String.IsNullOrEmpty(www.text) || www.text == "N/A" || www.text == "|")
+        {
+            //print("No Scores for this level");
+            timeText.text = "N/A";
+            nameText.text = "N/A";
+        }
+        else
+        {
+            //print("Top Level Score gathered " + www.text);
+            string[] nameAndTime = www.text.Split('|');
+            nameText.text = nameAndTime[0];
+            float topScore = float.Parse(nameAndTime[1], CultureInfo.InvariantCulture.NumberFormat);
+            timeText.text = topScore.ToString("F2");
         }
     }
 
@@ -74,16 +103,18 @@ public class AccountPanel : MonoBehaviour {
 
         if (System.String.IsNullOrEmpty(www.text) || www.text == "N/A" || www.text == "|")
         {
-            print("No Scores for this level");
+            //print("No Scores for this level: "+username + ", "+levelName);
             levelUIs[levelNum].levelTime.text = "N/A";
             for (int i = 0; i < 3; i++)
             {
                 levelUIs[levelNum].stars[i].enabled = false;
+                levelUIs[levelNum].levelTime.text = "N/A";
             }
         }
         else
         {
-            print("Top Level Score gathered " + www.text);
+            //print("Scores for: " + username + ", " + levelName + ", " + levelNum);
+            //print("Top Player Score gathered " + www.text);
             string[] scoreAndTime = www.text.Split('|');
             int score = int.Parse(scoreAndTime[0], CultureInfo.InvariantCulture.NumberFormat);
 
@@ -96,6 +127,8 @@ public class AccountPanel : MonoBehaviour {
             levelUIs[levelNum].levelTime.text = time.ToString("F2");
         }
     }
+
+    #endregion
 }
 
 
@@ -108,5 +141,7 @@ public struct LevelUI
 {
     public Text levelName;
     public Text levelTime;
+    public Text bestTime;
+    public Text bestName;
     public Image[] stars;
 }

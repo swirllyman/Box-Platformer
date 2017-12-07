@@ -41,7 +41,7 @@ public class Player : MonoBehaviour {
         }
         if (scene.name.Substring(1, 1) == "-")
         {
-            print("Timed Level");
+            //print("Timed Level");
             PauseController(true);
         }
         else
@@ -140,6 +140,7 @@ public class Player : MonoBehaviour {
         myRend.enabled = true;
     }
 
+    #region DB Calls
     IEnumerator GetPowerups()
     {
         WWWForm form = new WWWForm();
@@ -156,6 +157,8 @@ public class Player : MonoBehaviour {
             }
         }
     }
+
+    #endregion
 
     public void SetupDoubleJump()
     {

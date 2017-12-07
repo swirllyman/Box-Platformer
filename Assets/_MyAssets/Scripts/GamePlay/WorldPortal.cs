@@ -73,18 +73,20 @@ public class WorldPortal : MonoBehaviour {
         }
     }
 
+
+    #region DB Calls
     IEnumerator GetWorldStars()
     {
         WWWForm form = new WWWForm();
-        print("Checking username: " + GameManager.singleton.localPlayer.username);
-        print("Level: " + worldNum + "-");
+        //print("Checking username: " + GameManager.singleton.localPlayer.username);
+        //print("Level: " + worldNum + "-");
         form.AddField("usernamePost", GameManager.singleton.localPlayer.username);
         form.AddField("levelnamePost", worldNum+"-");
         WWW www = new WWW("https://shipment.000webhostapp.com/GetWorldStars.php", form);
 
         yield return www;
-        print(www.text);
+        //print(www.text);
         starCount.text = www.text;
     }
-
+    #endregion
 }

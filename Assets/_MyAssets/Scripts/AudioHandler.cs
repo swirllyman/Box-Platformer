@@ -32,19 +32,19 @@ public class AudioHandler : MonoBehaviour {
             switch (scene.name)
             {
                 case "Main":
-                    Fade(mainMenu, .5f, true);
+                    Fade(mainMenu, .05f, true);
                     break;
                 case "Overworld":
-                    Fade(overworld, .5f, true);
+                    Fade(overworld, .05f, true);
                     break;
                 case "Winterland":
-                    Fade(overworld, .5f, true);
+                    Fade(overworld, .05f, true);
                     break;
                 case "Grassy Hills":
-                    Fade(overworld, .5f, true);
+                    Fade(overworld, .05f, true);
                     break;
                 default:
-                    Fade(timedLevel, .5f, true);
+                    Fade(timedLevel, .05f, true);
                     break;
             }
         }

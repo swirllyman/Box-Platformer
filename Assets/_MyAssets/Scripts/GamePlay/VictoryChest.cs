@@ -100,9 +100,10 @@ public class VictoryChest : MonoBehaviour {
         StartCoroutine(GetTopPlayerScore(username));
     }
 
+    #region DB Calls
     IEnumerator GetTopPlayerScore(string username)
     {
-        print("Getting highest score for " + username + " for level " + levelNameText.text);
+        //print("Getting highest score for " + username + " for level " + levelNameText.text);
         if (username == "")
         {
             yourBestText.text = "N/A";
@@ -117,7 +118,7 @@ public class VictoryChest : MonoBehaviour {
 
         if (System.String.IsNullOrEmpty(www.text) || www.text == "N/A" || www.text == "|")
         {
-            print("No Scores for this level");
+            //print("No Scores for this level");
             yourBestText.text = "N/A";
         }
         else
@@ -150,4 +151,5 @@ public class VictoryChest : MonoBehaviour {
             newPRText.GetComponent<TextShiner>().StartShine();
         }
     }
+    #endregion
 }
